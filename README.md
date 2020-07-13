@@ -1,0 +1,3 @@
+# unix-essentials
+
+my general linux/unix configuration, things like my `.vimrc`, `.bashrc`, `.zshrc`, etc are up on here...
