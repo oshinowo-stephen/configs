@@ -1,3 +1,4 @@
-# unix-essentials
+# VIM STUFF
 
-my general linux/unix configuration, things like my `.vimrc`, `.bashrc`, `.zshrc`, etc are up on here...
+Just vim files for my needs... really simple stuff in here... will update every time I feel the need...
+
