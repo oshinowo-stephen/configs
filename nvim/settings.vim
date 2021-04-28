@@ -11,7 +11,6 @@ set fileencoding=utf-8
 set ruler
 set cmdheight=2
 set iskeyword+=-
-set mouse=a
 set splitbelow
 set splitright
 set conceallevel=0
@@ -35,6 +34,24 @@ set formatoptions-=cro
 " AUTOSAVE TO VIMRC
 au! BufWritePost $MYVIMRC source %
 
-" REMAPS
-noremap <leader><leader> :bnext <CR>
-noremap <leader>\t :botright :vertical terminal <CR>
+" BUFFER NAV REMAPS
+noremap <leader><leader> :bn <CR>
+noremap <leader>b :bp <CR>
+
+" FZF CONFIG
+noremap <leader>f :Rg <CR>
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)

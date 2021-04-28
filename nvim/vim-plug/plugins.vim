@@ -11,21 +11,23 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	" Syntax Support
 	Plug 'sheerun/vim-polyglot'
   " Theme
-  Plug 'morhetz/gruvbox'
+  " Plug 'morhetz/gruvbox'
+	Plug 'dracula/vim', { 'as': 'dracula' }
 	" Airline/Statusline
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	" Fuzzy Finder
 	Plug 'junegunn/fzf.vim'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	" Terminal
+	Plug 'voldikss/vim-floaterm'
 	" Completion & Linting
-	Plug 'ncm2/ncm2'
-  Plug 'ncm2/ncm2-path'
-  Plug 'roxma/nvim-yarp'
-  Plug 'ncm2/ncm2-racer'
-	Plug 'ncm2/ncm2-bufword'
 	Plug 'dense-analysis/ale'
 	Plug 'airblade/vim-rooter'
-  Plug 'mhartington/nvim-typescript'
+	Plug 'tpope/vim-commentary'
+	Plug 'editorconfig/editorconfig-vim'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" Externals / Third Parties
+	Plug 'tpope/vim-fugitive'
 
 call plug#end()
